@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ukh60pulwb6k"]
+
+[ext_resource type="Script" path="res://scenes/KillZone.gd" id="1_iholt"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5rekq"]
+
+[node name="KillZone" type="Area2D"]
+script = ExtResource("1_iholt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("WorldBoundaryShape2D_5rekq")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

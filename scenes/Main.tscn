@@ -1,0 +1,381 @@
+[gd_scene load_steps=26 format=3 uid="uid://dsyfep1odrxje"]
+
+[ext_resource type="PackedScene" path="res://Scenes/Ground.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://d2uof8cdoe3lv" path="res://assets/Clouds 6/1.png" id="1_0t85h"]
+[ext_resource type="PackedScene" uid="uid://c66ykabiakspw" path="res://scenes/Platform.tscn" id="2_la66g"]
+[ext_resource type="Texture2D" uid="uid://b7rck55wvxlgk" path="res://assets/Clouds 6/2.png" id="2_r2qr2"]
+[ext_resource type="PackedScene" uid="uid://b2kegni6hnowh" path="res://scenes/Player.tscn" id="2_w3nhr"]
+[ext_resource type="PackedScene" uid="uid://ukh60pulwb6k" path="res://scenes/KillZone.tscn" id="3_42paf"]
+[ext_resource type="Texture2D" uid="uid://c5s1c315goi62" path="res://assets/Clouds 6/3.png" id="3_a316x"]
+[ext_resource type="Texture2D" uid="uid://bk0s3qdy4r1ra" path="res://assets/Clouds 6/4.png" id="4_v8i64"]
+[ext_resource type="Texture2D" uid="uid://b7c2r5674gbvl" path="res://assets/kindpng_1725259.png" id="8_7j8jc"]
+[ext_resource type="Script" path="res://scenes/objective_area.gd" id="9_6qw00"]
+[ext_resource type="Texture2D" uid="uid://cirwssqa1y3jv" path="res://assets/fasilkom.png" id="10_m1bs2"]
+[ext_resource type="PackedScene" uid="uid://1jnubeayc4hi" path="res://scenes/Zombie.tscn" id="12_jqxu8"]
+
+[sub_resource type="Animation" id="Animation_2riuh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-460, 271)]
+}
+
+[sub_resource type="Animation" id="Animation_ho77d"]
+resource_name = "move"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-460, 271), Vector2(0.999969, 271)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oppag"]
+_data = {
+"RESET": SubResource("Animation_2riuh"),
+"move": SubResource("Animation_ho77d")
+}
+
+[sub_resource type="Animation" id="Animation_8qgjy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(527, -213)]
+}
+
+[sub_resource type="Animation" id="Animation_8xflh"]
+resource_name = "move"
+length = 6.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5.73333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(527, -213), Vector2(-460, -215)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tyoto"]
+_data = {
+"RESET": SubResource("Animation_8qgjy"),
+"move": SubResource("Animation_8xflh")
+}
+
+[sub_resource type="Animation" id="Animation_itji2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(689, -868)]
+}
+
+[sub_resource type="Animation" id="Animation_yrm54"]
+resource_name = "move"
+length = 6.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5.73333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(689, -868), Vector2(-686, -358)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bhpx3"]
+_data = {
+"RESET": SubResource("Animation_itji2"),
+"move": SubResource("Animation_yrm54")
+}
+
+[sub_resource type="Animation" id="Animation_p2uud"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1723, 271)]
+}
+
+[sub_resource type="Animation" id="Animation_g3fsr"]
+resource_name = "move"
+length = 4.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1723, 271), Vector2(2543, 271)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t8onh"]
+_data = {
+"RESET": SubResource("Animation_p2uud"),
+"move": SubResource("Animation_g3fsr")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4mhe"]
+size = Vector2(72.5, 75)
+
+[node name="Root" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+offset = Vector2(10, -250)
+scale = Vector2(4, 4)
+transform = Transform2D(4, 0, 0, 4, 10, -250)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(251.333, 106.667)
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("1_0t85h")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(251.333, 106.667)
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("2_r2qr2")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(0, 106.667)
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource("3_a316x")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(576, 106.667)
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+texture = ExtResource("3_a316x")
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(0, 106.667)
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer6"]
+texture_repeat = 2
+texture = ExtResource("4_v8i64")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(576, 106.667)
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
+texture = ExtResource("4_v8i64")
+
+[node name="Floor" type="Node2D" parent="."]
+
+[node name="Ground" parent="Floor" instance=ExtResource("1")]
+position = Vector2(507.708, 363.86)
+
+[node name="Ground2" parent="Floor" instance=ExtResource("1")]
+position = Vector2(789.149, 294.054)
+
+[node name="Ground3" parent="Floor" instance=ExtResource("1")]
+position = Vector2(225.95, 294.562)
+
+[node name="Ground4" parent="Floor" instance=ExtResource("1")]
+position = Vector2(1143, 294)
+
+[node name="Ground5" parent="Floor" instance=ExtResource("1")]
+position = Vector2(1497, 294)
+
+[node name="Ground6" parent="Floor" instance=ExtResource("1")]
+position = Vector2(-685, 294.562)
+
+[node name="Floor2" type="Node2D" parent="."]
+position = Vector2(1625, 0)
+
+[node name="Ground6" parent="Floor2" instance=ExtResource("1")]
+position = Vector2(680, -266)
+
+[node name="Ground4" parent="Floor2" instance=ExtResource("1")]
+position = Vector2(1143, 294)
+
+[node name="Ground5" parent="Floor2" instance=ExtResource("1")]
+position = Vector2(1497, 294)
+
+[node name="Ground8" parent="Floor2" instance=ExtResource("1")]
+position = Vector2(1032, -266)
+
+[node name="Ground9" parent="Floor2" instance=ExtResource("1")]
+position = Vector2(-2310, -190)
+
+[node name="Ground11" parent="Floor2" instance=ExtResource("1")]
+position = Vector2(-874, -191)
+
+[node name="Ground10" parent="Floor2" instance=ExtResource("1")]
+position = Vector2(-521, -125)
+
+[node name="Ground14" parent="Floor2" instance=ExtResource("1")]
+position = Vector2(-167, -125)
+
+[node name="Ground15" parent="Floor2" instance=ExtResource("1")]
+position = Vector2(186, -125)
+
+[node name="Ground16" parent="Floor2" instance=ExtResource("1")]
+position = Vector2(399, -196)
+
+[node name="Ground12" parent="Floor2" instance=ExtResource("1")]
+position = Vector2(-711, -845)
+
+[node name="Ground13" parent="Floor2" instance=ExtResource("1")]
+position = Vector2(1384, -266)
+
+[node name="Platform" type="Node" parent="."]
+
+[node name="AnimatableBody2D2" parent="Platform" instance=ExtResource("2_la66g")]
+position = Vector2(956, 62)
+scale = Vector2(3, 3)
+
+[node name="AnimatableBody2D" parent="Platform" instance=ExtResource("2_la66g")]
+position = Vector2(-460, 271)
+scale = Vector2(3, 3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform/AnimatableBody2D"]
+libraries = {
+"": SubResource("AnimationLibrary_oppag")
+}
+autoplay = "move"
+
+[node name="AnimatableBody2D4" parent="Platform" instance=ExtResource("2_la66g")]
+position = Vector2(527, -213)
+scale = Vector2(3, 3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform/AnimatableBody2D4"]
+libraries = {
+"": SubResource("AnimationLibrary_tyoto")
+}
+autoplay = "move"
+
+[node name="AnimatableBody2D5" parent="Platform" instance=ExtResource("2_la66g")]
+position = Vector2(3301, 99)
+scale = Vector2(3, 3)
+
+[node name="AnimatableBody2D9" parent="Platform" instance=ExtResource("2_la66g")]
+position = Vector2(3466, -115)
+scale = Vector2(3, 3)
+
+[node name="AnimatableBody2D6" parent="Platform" instance=ExtResource("2_la66g")]
+position = Vector2(2686, -588)
+scale = Vector2(3, 3)
+
+[node name="AnimatableBody2D7" parent="Platform" instance=ExtResource("2_la66g")]
+position = Vector2(689, -868)
+scale = Vector2(3, 3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform/AnimatableBody2D7"]
+libraries = {
+"": SubResource("AnimationLibrary_bhpx3")
+}
+autoplay = "move"
+
+[node name="AnimatableBody2D8" parent="Platform" instance=ExtResource("2_la66g")]
+position = Vector2(1723, 271)
+scale = Vector2(3, 3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform/AnimatableBody2D8"]
+libraries = {
+"": SubResource("AnimationLibrary_t8onh")
+}
+autoplay = "move"
+
+[node name="Player" parent="." instance=ExtResource("2_w3nhr")]
+position = Vector2(502, 153)
+
+[node name="Timer" type="Timer" parent="Player"]
+wait_time = 3.0
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(1.2, 1.2)
+
+[node name="YouWin" type="Sprite2D" parent="Player/Camera2D"]
+visible = false
+z_index = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_7j8jc")
+
+[node name="KillZone" parent="." instance=ExtResource("3_42paf")]
+position = Vector2(507, 779)
+
+[node name="ObjectiveArea" type="Area2D" parent="."]
+position = Vector2(911, -1030)
+script = ExtResource("9_6qw00")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectiveArea"]
+position = Vector2(0.75, 84.5)
+shape = SubResource("RectangleShape2D_u4mhe")
+
+[node name="FasilkomLogo" type="Sprite2D" parent="ObjectiveArea"]
+position = Vector2(1, 84)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_m1bs2")
+
+[node name="Zombie" parent="." instance=ExtResource("12_jqxu8")]
+position = Vector2(961, -202)
+scale = Vector2(0.7, 0.7)
+
+[connection signal="timeout" from="Player/Timer" to="Player" method="_on_timer_timeout"]
+[connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
+[connection signal="body_entered" from="ObjectiveArea" to="ObjectiveArea" method="_on_body_entered"]
