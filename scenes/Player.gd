@@ -34,7 +34,7 @@ func _physics_process(delta):
 				velocity.x = -crouch_speed
 				$AnimatedSprite2D.play("crouch")
 			else:
-				$AnimatedSprite2D.play("run")	
+				$AnimatedSprite2D.play("walk right")	
 				if Input.is_action_just_pressed("ui_left") and can_dash:
 					if Time.get_ticks_msec() / 1000 - last_left_move_time < dash_interval:
 						dash = true
@@ -56,7 +56,7 @@ func _physics_process(delta):
 				$AnimatedSprite2D.play("crouch")
 			else:
 				velocity.x = walk_speed
-				$AnimatedSprite2D.play("run")
+				$AnimatedSprite2D.play("walk right")
 				if Input.is_action_just_pressed("ui_right") and can_dash:
 					if Time.get_ticks_msec() / 1000 - last_right_move_time < dash_interval:
 						dash = true
@@ -91,8 +91,7 @@ func _on_dash_timer_timeout() -> void:
 	
 	
 func show_win():
-	$Camera2D/YouWin.visible = true
-	$Timer.start()
+	$Camera2D/Win.visible = true
 	
 	
 func _on_timer_timeout() -> void:
@@ -102,4 +101,5 @@ func _on_timer_timeout() -> void:
 func dead():
 	is_dead = true
 	velocity.x = 0
+	$AudioStreamPlayer2D.play()
 	$AnimatedSprite2D.play("dead")

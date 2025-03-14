@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb7fcvao4o7q"]
+
+[ext_resource type="Script" path="res://scenes/arrow.gd" id="1_vh6t4"]
+[ext_resource type="Texture2D" uid="uid://bbpyisu13e5mk" path="res://assets/Arrows_pack.png" id="2_kwki4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3g7c"]
+size = Vector2(54, 16)
+
+[node name="Arrow" type="RigidBody2D"]
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 5
+script = ExtResource("1_vh6t4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_kwki4")
+region_enabled = true
+region_rect = Rect2(182.577, 1399.82, 565.91, 177.918)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i3g7c")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

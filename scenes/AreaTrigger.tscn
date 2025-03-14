@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://4a26hnuectey"]
+
+[ext_resource type="Script" path="res://lose_area.gd" id="1_p1jhd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gla1f"]
+
+[node name="AreaTrigger" type="Area2D"]
+script = ExtResource("1_p1jhd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gla1f")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

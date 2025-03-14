@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dsyfep1odrxje"]
+[gd_scene load_steps=28 format=3 uid="uid://dsyfep1odrxje"]
 
 [ext_resource type="PackedScene" path="res://Scenes/Ground.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://d2uof8cdoe3lv" path="res://assets/Clouds 6/1.png" id="1_0t85h"]
@@ -11,7 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://b7c2r5674gbvl" path="res://assets/kindpng_1725259.png" id="8_7j8jc"]
 [ext_resource type="Script" path="res://scenes/objective_area.gd" id="9_6qw00"]
 [ext_resource type="Texture2D" uid="uid://cirwssqa1y3jv" path="res://assets/fasilkom.png" id="10_m1bs2"]
+[ext_resource type="AudioStream" uid="uid://c5xhtg3gb527x" path="res://assets/sounds/success-fanfare-trumpets-6185.mp3" id="12_54axj"]
 [ext_resource type="PackedScene" uid="uid://1jnubeayc4hi" path="res://scenes/Zombie.tscn" id="12_jqxu8"]
+[ext_resource type="AudioStream" uid="uid://rgkd1omgeior" path="res://assets/sounds/fun-retro-game-175468.mp3" id="14_ggfr0"]
 
 [sub_resource type="Animation" id="Animation_2riuh"]
 length = 0.001
@@ -342,7 +344,7 @@ libraries = {
 autoplay = "move"
 
 [node name="Player" parent="." instance=ExtResource("2_w3nhr")]
-position = Vector2(502, 153)
+position = Vector2(509, 177)
 
 [node name="Timer" type="Timer" parent="Player"]
 wait_time = 3.0
@@ -350,7 +352,7 @@ wait_time = 3.0
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(1.2, 1.2)
 
-[node name="YouWin" type="Sprite2D" parent="Player/Camera2D"]
+[node name="Win" type="Sprite2D" parent="Player/Camera2D"]
 visible = false
 z_index = 1
 scale = Vector2(0.5, 0.5)
@@ -372,10 +374,22 @@ position = Vector2(1, 84)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_m1bs2")
 
+[node name="Timer" type="Timer" parent="ObjectiveArea"]
+wait_time = 4.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ObjectiveArea"]
+stream = ExtResource("12_54axj")
+
 [node name="Zombie" parent="." instance=ExtResource("12_jqxu8")]
 position = Vector2(961, -202)
 scale = Vector2(0.7, 0.7)
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_ggfr0")
+volume_db = -8.0
+autoplay = true
+
 [connection signal="timeout" from="Player/Timer" to="Player" method="_on_timer_timeout"]
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
 [connection signal="body_entered" from="ObjectiveArea" to="ObjectiveArea" method="_on_body_entered"]
+[connection signal="timeout" from="ObjectiveArea/Timer" to="ObjectiveArea" method="_on_timer_timeout"]

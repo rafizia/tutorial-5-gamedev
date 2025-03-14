@@ -1,0 +1,16 @@
+res://default_env.tres
+res://scenes/Level2.tscn
+res://scenes/Player.gd
+res://scenes/Main.tscn
+res://scenes/Player.tscn
+res://scenes/KillZone.tscn
+res://scenes/Platform.tscn
+res://scenes/Zombie.tscn
+res://scenes/Slime.tscn
+res://scenes/Arrow.tscn
+res://scenes/Shooter.tscn
+res://scenes/FallingSpike.tscn
+res://scenes/finish_area.gd
+res://scenes/WinScreen.tscn
+res://scenes/objective_area.gd
+res://scenes/arrow.gd

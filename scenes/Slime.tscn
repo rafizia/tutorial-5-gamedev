@@ -1,0 +1,149 @@
+[gd_scene load_steps=21 format=3 uid="uid://cftr6wo4fi3xx"]
+
+[ext_resource type="Texture2D" uid="uid://cgnawgd33uky3" path="res://assets/platformer_metroidvania asset pack v1.01/enemies sprites/slime/slime_walk_anim_strip_15.png" id="1_1kdmm"]
+[ext_resource type="Script" path="res://scenes/slime.gd" id="1_007io"]
+[ext_resource type="Script" path="res://scenes/EnemyKillZone.gd" id="2_e73qm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4xo0"]
+atlas = ExtResource("1_1kdmm")
+region = Rect2(0, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mh4ek"]
+atlas = ExtResource("1_1kdmm")
+region = Rect2(16, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wen0h"]
+atlas = ExtResource("1_1kdmm")
+region = Rect2(32, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_020pi"]
+atlas = ExtResource("1_1kdmm")
+region = Rect2(48, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfco0"]
+atlas = ExtResource("1_1kdmm")
+region = Rect2(64, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbv4j"]
+atlas = ExtResource("1_1kdmm")
+region = Rect2(80, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anu7p"]
+atlas = ExtResource("1_1kdmm")
+region = Rect2(96, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bl1hg"]
+atlas = ExtResource("1_1kdmm")
+region = Rect2(112, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xfnr"]
+atlas = ExtResource("1_1kdmm")
+region = Rect2(128, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nhwo"]
+atlas = ExtResource("1_1kdmm")
+region = Rect2(144, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igdsc"]
+atlas = ExtResource("1_1kdmm")
+region = Rect2(160, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2isy0"]
+atlas = ExtResource("1_1kdmm")
+region = Rect2(176, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxkuk"]
+atlas = ExtResource("1_1kdmm")
+region = Rect2(192, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgmnh"]
+atlas = ExtResource("1_1kdmm")
+region = Rect2(208, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8tp1"]
+atlas = ExtResource("1_1kdmm")
+region = Rect2(224, 0, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ng2g4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4xo0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mh4ek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wen0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_020pi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfco0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbv4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anu7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bl1hg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xfnr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nhwo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igdsc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2isy0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxkuk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgmnh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8tp1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8o6fc"]
+size = Vector2(28.5, 37.5)
+
+[node name="Slime" type="Node2D"]
+script = ExtResource("1_007io")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ng2g4")
+autoplay = "default"
+frame_progress = 0.980232
+flip_h = true
+
+[node name="KillZone" type="Area2D" parent="."]
+script = ExtResource("2_e73qm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
+position = Vector2(-0.25, 5.75)
+shape = SubResource("RectangleShape2D_8o6fc")
+
+[node name="Timer" type="Timer" parent="KillZone"]
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(14, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-14, 0)
+
+[connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
+[connection signal="timeout" from="KillZone/Timer" to="KillZone" method="_on_timer_timeout"]
